@@ -1,15 +1,88 @@
-# 🏗 Scaffold-ETH
+# 🏗 Scaffold-ETH/ CryptoCredit (group 8)
 
-> everything you need to build on Ethereum! 🚀
+> serverless front-end on IPFS 🚀
 
-🧪 Quickly experiment with Solidity using a frontend that adapts to your smart contract:
+🧪 MVP, report.sol:
 
-![image](https://user-images.githubusercontent.com/2653167/124158108-c14ca380-da56-11eb-967e-69cde37ca8eb.png)
+![image](https://github.com/dwallace-cal/CryptoCredit/blob/master/Screenshot%20(903).png | width=100)
 
 
-# 🏄‍♂️ Quick Start
+# 🏄‍♂️ Future Optimizations:
+Pull data with etherscan api after user signing then implement credit algorithm:
 
-Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
+    The report will include:
+A brief overview of the report, including 
+The length of history of this address
+The total number of transactions
+The top five most types of transactions
+
+A bar chart showing the number of different types of transactions
+A pie chart showing the top five types of transactions and the others
+A line chart for the value of ETH held in the account over time
+A bar chart comparing eth going in and out of the account (In fact, it should be just two bars where one is income and the other is the spending)
+A line chart for the accumulation of Gas Fee
+A bar chart to represent the frequency of transactions per month
+A bar chart on the stake time (holding time before it’s being sold) for NFT assets (a day, a week, a month, six months, more than six months)
+Some warnings on the risky transactions/behavior, if any, and these would include:
+Check if there are frequently transactions between two or a few addresses
+Check if there’s a habit of making a test transaction before sending a large amount 
+Check if there’s a long idle time in the account(like if the account has been idle for a long time and then there are some really frequent transactions)
+
+The Algorithm/Pseudo-code for the Credit Score:
+Base Score: 350
+Length of address transaction history: 100 (20%)
+History time: 50 
+Score = max(1,  (today - first date of transaction - 30))
+Score = min(5, log(score))
+Score = score * 10
+Number of transactions: 50 
+Score = max(1, number of transactions)
+Score = min(2, lb(score))
+Score = score * 25
+Amount of ETH in the account: 25 (5%)
+If the amount of eth is in the increasing trend (maybe linear regression and curve is positive)
+Average time of NFT holding: 50 (10%)
+
+
+Amounts going in / out of the account in the past six month: 100 (20%)
+We need to calculate the average ETH account for the past six month
+Diff = in - out;
+Rate = diff / avg
+If rate > -0.7:
+Rate = min (0.3, rate)
+Rate = rate + 0.7
+Score = 25 + rate * 50
+If rate <= -0.7:
+Rate = max(-5, rate + 0.7)
+Score = 25 - rate * 5
+
+
+History of loaning: 150(30%)
+Not sure about the actual function, but it should be something like a combination of:
+The amount owed
+The history of paying back (in time)
+Risky behavior speculations: 75 (15%)
+If there’s a risk pattern of frequent transactions among a few transactions: 30
+Each found pattern - 7.5
+Or it can be simplified by doing a 0/30
+If there’s a habit of making a test transaction before sending a large amount: 25
+Score = 0/25
+Check if there’s a long idle time in the account(like if the account has been idle for a long time and then there are some really frequent transactions: 20
+0/20
+
+
+Sds
+
+300 - 850: 550 points
+300 - 629: bad
+630 - 689: good
+690 - 719: great
+720 - 850: excellent
+
+
+
+
+
 
 > clone/fork 🏗 scaffold-eth:
 
@@ -39,71 +112,4 @@ cd scaffold-eth
 yarn deploy
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src`
-
-💼 Edit your deployment scripts in `packages/hardhat/deploy`
-
-📱 Open http://localhost:3000 to see the app
-
-# 📚 Documentation
-
-Documentation, tutorials, challenges, and many more resources, visit: [docs.scaffoldeth.io](https://docs.scaffoldeth.io)
-
-# 🔭 Learning Solidity
-
-📕 Read the docs: https://docs.soliditylang.org
-
-📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `YourContract.sol` in **🏗 scaffold-eth**
-
-- [Primitive Data Types](https://solidity-by-example.org/primitives/)
-- [Mappings](https://solidity-by-example.org/mapping/)
-- [Structs](https://solidity-by-example.org/structs/)
-- [Modifiers](https://solidity-by-example.org/function-modifier/)
-- [Events](https://solidity-by-example.org/events/)
-- [Inheritance](https://solidity-by-example.org/inheritance/)
-- [Payable](https://solidity-by-example.org/payable/)
-- [Fallback](https://solidity-by-example.org/fallback/)
-
-📧 Learn the [Solidity globals and units](https://docs.soliditylang.org/en/latest/units-and-global-variables.html)
-
-# 🛠 Buidl
-
-Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth/branches/active), [open issues](https://github.com/scaffold-eth/scaffold-eth/issues), and join/fund the 🏰 [BuidlGuidl](https://BuidlGuidl.com)!
-
-  
- - 🚤  [Follow the full Ethereum Speed Run](https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c)
-
-
- - 🎟  [Create your first NFT](https://github.com/scaffold-eth/scaffold-eth/tree/simple-nft-example)
- - 🥩  [Build a staking smart contract](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-1-decentralized-staking)
- - 🏵  [Deploy a token and vendor](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-2-token-vendor)
- - 🎫  [Extend the NFT example to make a "buyer mints" marketplace](https://github.com/scaffold-eth/scaffold-eth/tree/buyer-mints-nft)
- - 🎲  [Learn about commit/reveal](https://github.com/scaffold-eth/scaffold-eth-examples/tree/commit-reveal-with-frontend)
- - ✍️  [Learn how ecrecover works](https://github.com/scaffold-eth/scaffold-eth-examples/tree/signature-recover)
- - 👩‍👩‍👧‍👧  [Build a multi-sig that uses off-chain signatures](https://github.com/scaffold-eth/scaffold-eth/tree/meta-multi-sig)
- - ⏳  [Extend the multi-sig to stream ETH](https://github.com/scaffold-eth/scaffold-eth/tree/streaming-meta-multi-sig)
- - ⚖️  [Learn how a simple DEX works](https://medium.com/@austin_48503/%EF%B8%8F-minimum-viable-exchange-d84f30bd0c90)
- - 🦍  [Ape into learning!](https://github.com/scaffold-eth/scaffold-eth/tree/aave-ape)
-
-# 💌 P.S.
-
-🌍 You need an RPC key for testnets and production deployments, create an [Alchemy](https://www.alchemy.com/) account and replace the value of `ALCHEMY_KEY = xxx` in `packages/react-app/src/constants.js` with your new key.
-
-📣 Make sure you update the `InfuraID` before you go to production. Huge thanks to [Infura](https://infura.io/) for our special account that fields 7m req/day!
-
-# 🏃💨 Speedrun Ethereum
-Register as a builder [here](https://speedrunethereum.com) and start on some of the challenges and build a portfolio.
-
-# 💬 Support Chat
-
-Join the telegram [support chat 💬](https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA) to ask questions and find others building with 🏗 scaffold-eth!
-
----
-
-🙏 Please check out our [Gitcoin grant](https://gitcoin.co/grants/2851/scaffold-eth) too!
-
-### Automated with Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/scaffold-eth/scaffold-eth)
