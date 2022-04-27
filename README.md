@@ -4,7 +4,7 @@
 
 🧪 MVP, report.sol:
 
-![image](https://github.com/dwallace-cal/CryptoCredit/blob/master/Screenshot%20(903).png | width=100)
+![image](https://github.com/dwallace-cal/repo/blob/master/Screenshot%20(903).png | width=100)
 
 
 # 🏄‍♂️ Future Optimizations:
