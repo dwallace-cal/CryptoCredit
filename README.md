@@ -10,12 +10,13 @@
 # 🏄‍♂️ Future Optimizations:
 Pull data with etherscan api after user signing then implement credit algorithm:
 
-    The report will include:
-A brief overview of the report, including 
-The length of history of this address
-The total number of transactions
-The top five most types of transactions
+The report will include:
+    A brief overview of the report, including 
+    The length of history of this address
+    The total number of transactions
+    The top five most types of transactions
 
+> Custom report options:
 A bar chart showing the number of different types of transactions
 A pie chart showing the top five types of transactions and the others
 A line chart for the value of ETH held in the account over time
@@ -28,7 +29,7 @@ Check if there are frequently transactions between two or a few addresses
 Check if there’s a habit of making a test transaction before sending a large amount 
 Check if there’s a long idle time in the account(like if the account has been idle for a long time and then there are some really frequent transactions)
 
-The Algorithm/Pseudo-code for the Credit Score:
+> The Algorithm/Pseudo-code for the Credit Score:
 Base Score: 350
 Length of address transaction history: 100 (20%)
 History time: 50 
