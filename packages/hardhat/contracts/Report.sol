@@ -11,7 +11,6 @@ contract CryptoCredit is ERC721, Pausable, Ownable, ERC721Burnable {
     constructor() ERC721("CryptoCredit", "REPORT") {}
 
 
-    //update URI with IPFS hash before minting
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://ipfs.io/ipfs/QmVDPLebXizYJ7sTdabd1hJoLZMQF8L4YxJwm4Ay57nHPS";
